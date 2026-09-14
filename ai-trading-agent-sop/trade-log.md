@@ -13,6 +13,14 @@ Log format: `DATE | ACTION | TICKER | $AMOUNT | SIGNAL-TYPE | SIGNAL DETAIL | TH
 
 ---
 
-## Decisions
+## Authorization events (continued)
 
-(None yet. No trades will be evaluated or placed until the account is funded and you give the go-ahead.)
+**2026-09-14 | ACCOUNT FUNDED, AUTONOMY OVERRIDE GRANTED.** Account ••••6751 funded at $50 (get_portfolio: cash $50, buying_power $50; get_accounts: unsettled_funds $0.00 — note get_portfolio separately shows pending_deposits: $50, a discrepancy to re-check on the next funding event). Brody authorized autonomous trading, overriding the SOP's normal Phase 3 graduation gate (≥20 logged decisions / ≥80% approval) effective immediately:
+- **Max 1 trade per calendar day** (new operating rule, added at Brody's instruction — enforced by checking this log for today's date before evaluating any buy).
+- **No "maximize money" mandate.** Brody's "maximize gains" instruction is interpreted as: evaluate all 3 signal paths every day and take the best qualifying candidate — never as license to loosen the Hard Rules (position caps, cluster requirements, no chasing/leverage/options/penny stocks) to chase bigger swings.
+- **Sizing recalculated for the real $50 balance**, not the original SOP's ~$200 assumption: ≤35% cap ≈ $17.50/position, ≥5% cash buffer ≈ $2.50. Target sizing ~$15/trade pending actual buying-power check at run time.
+- **Runs via a scheduled daily Routine** (weekday mornings, ~9:45 ET) rather than only inside a session Brody starts manually. Continuous intraday stop-loss/take-profit monitoring is NOT running between daily checks — fractional positions can't carry resting stop orders on Robinhood, so synthetic stops are only evaluated once/day at the scheduled run. A fast intraday move against a position will not be caught until the next morning's check. Flagged to Brody as an accepted risk of daily (vs. continuous) monitoring.
+- Stop-and-ask triggers remain live and pause the automation: portfolio down >20% from the $50 start (<$40), any trade that would breach a Hard Rule, ambiguous/missing data, a signal pointing to a brand-new sector, or anything not clearly covered by this SOP.
+- Post-notify every trade AND every no-trade decision as a morning report.
+
+## Decisions
