@@ -25,7 +25,19 @@ The operating instructions for an AI agent connected to a Robinhood agentic-trad
 3. **When in doubt, do nothing.** Cash is a position. A "no trade" day is a correct, common outcome.
 4. **Signal quality differs by source.** The insider-buy signal is the stronger, better-documented stock-picking edge; the politician signal is weak, lagged, and easily faked by one lucky position (see performance-scoring.md). Signal C is the only forward-looking signal but fires rarely (divergence-only) and is a macro regime bet, not a stock pick. Weight accordingly, but never trade any signal without its qualifying gate.
 
-## HARD RULES (non-negotiable)
+## AMENDMENT — discretionary judgment-based trading authorized (2026-09-14, Brody)
+
+Brody authorized dropping the signal-cluster requirement below and loosening most of the numbered Hard Rules, in favor of trading on Claude's own market judgment/predictions, for the explicit goal of maximizing gains. Effective immediately this **supersedes** the numbered Hard Rules and the BUY/SELL decision process further down wherever they conflict — **except** the following, which Claude is keeping in force and declined to lift on this authorization (raise it again, specifically, if you want to push further on any of these):
+
+- **No leverage, margin borrowing, or short selling (was part of Rule 5).** This account is a Robinhood `limited_margin` account type, not a plain cash account — actually using margin here could create real debt beyond the $50 deposited, not just risk of losing it. Kept off pending a separate, explicit confirmation from Brody that he wants margin exposure specifically.
+- **No options or crypto (was Rules 2-3).** Not supported by Robinhood's agentic-trading beta yet anyway (equities only — see platform constraints below). Kept as a rule regardless of platform support.
+- **A lowered but real floor against penny-stock / OTC gambling (was Rule 4, $5/share and $2B cap):** no sub-$1/share, no sub-$300M market cap, no OTC/pink-sheet listings. These names carry manipulation and liquidity risk that discretionary judgment is particularly bad at pricing — a "prediction" about a thinly-traded microcap is closer to a coin flip than a call on a liquid large-cap.
+
+Everything else is now discretionary: no cluster/signal requirement to originate a buy or sell; no fixed earnings-window blackout; no fixed chase-cap; position sizing is Claude's judgment call rather than a fixed ≤35% ceiling (though for a $50 account, going all-in on one name rarely buys anything worth the lost diversification — reasonable sizing judgment still applies, not maximum concentration by default). Long U.S. equities/ETFs on NYSE/Nasdaq only, still the scope (that's what's funded and what the platform supports).
+
+**These are now real speculative, discretionary picks — not signal-verified ones.** There is no verifiable edge behind a "market judgment" call the way there was behind a verified insider/politician cluster. Every decision under this amendment must say so plainly in the log and in the report to Brody, rather than being dressed up as if it carried the same evidential weight as a verified cluster. The 1-trade/day cap, the stop-and-ask triggers, and the post-notify requirement (all logged 2026-09-14 below) are unchanged by this amendment.
+
+## HARD RULES (superseded 2026-09-14 except where the amendment above keeps them - kept below for rationale/reference)
 
 The agent must NEVER:
 
